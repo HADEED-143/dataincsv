@@ -1,29 +1,31 @@
 import pandas as pd
 import csv
-
-from pandas import notnull
-
 df = pd.read_csv('Hadeed-Task-Data (1).csv')
 
 agecsv18 = df[(df['age'] == 18)]
 agecsv19 = df[(df['age'] == 19)]
 agecsv20 = df[(df['age'] == 20)]
 
+agecsv18.isnull()
+agecsv19.isnull()
+agecsv20.isnull()
 
-age_18 = agecsv18.head().to_csv('age_18.csv')
-age_19 = agecsv19.head().to_csv('age_19.csv')
-age_20 = agecsv20.head().to_csv('age_20.csv')
+agecsv18 = df.fillna(value=0)
+agecsv19 = df.fillna(value=0)
+agecsv20 = df.fillna(value=0)
+
+print(agecsv18.head().to_csv('age_18.csv'))
+print(agecsv19.head().to_csv('age_19.csv'))
+print(agecsv20.head().to_csv('age_20.csv'))
 
 
-print(age_18)
-print(age_19)
-print(age_20)
+
+
 
 """
-datacsv1 = pd.DataFrame(agecsv18.notnull())
-datacsv2 = pd.DataFrame(agecsv19.notnull())
-datacsv3 = pd.DataFrame(agecsv20.notnull())
-
+age_18 = agecsv18.to_csv('age_18.csv')
+age_19 = agecsv19.to_csv('age_19.csv')
+age_20 = agecsv20.to_csv('age_20.csv')
 
 with open('age_18.csv', 'w') as file:
     writer = csv.writer(file)
